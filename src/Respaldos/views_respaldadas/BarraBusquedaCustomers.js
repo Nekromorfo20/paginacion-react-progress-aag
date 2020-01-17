@@ -11,8 +11,9 @@ const BarraBusqueda = (props) => {
                             <p className="text-muted h6">Buscar por:</p>
                             <select className="form-control" onChange={props.onChangeSelectSeachFor}>
                                 <option value="">- Selecciona un tipo de dato -</option>
-                                <option value="name">Nombre</option>
-                                <option value="version">Version</option>
+                                <option value="Name">Nombre</option>
+                                <option value="Address">Direccion</option>
+                                <option value="SalesRep">Reporte ventas</option>
                             </select>
                         </div>
                         <div className="col-7 col-offset-1">

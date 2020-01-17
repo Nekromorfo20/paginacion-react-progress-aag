@@ -11,9 +11,9 @@ const Tabla = (props) => {
                     <tr className="bg-dark text-white">
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Orden</th>
-                        <th>Imagen</th>
-                        <th>Version</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Reporte de ventas</th>
                     </tr>
                     <TablaItem
                       renderTodos={props.renderTodos}

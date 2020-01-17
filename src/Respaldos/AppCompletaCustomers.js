@@ -1,19 +1,14 @@
 /*
 Version estable de la Paginacion:
-==================================
+---------------------------------
 Author: Alan Aguilar
 Fecha Cambio: 14-Enero-2020
 Descripcion: Se mejoro la version del proyecto corriegiendo los errores la paginacion
              de los datos.
----------------------------------
-Fecha cambio: 20-Enero-2020
-Descripcion: Se realizo la informacion de la tabla y el cargado de la informacion utilizando el service
-             de pokemons, se realizo un respaldo de la version anterior de proyecto en la carpeta /Respaldos
 */
 
-import React, { Component, Fragment } from 'react'
-import PokemonService from './services/pokemon.service'
-// import CustomerService from './services/customer.service'
+import React, { Component, Fragment } from 'react';
+import CustomerService from './services/customer.service'
 import 'bootstrap/dist/css/bootstrap.css'
 // import $ from 'jquery'
 
@@ -47,16 +42,16 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    let pokemonService = new PokemonService()
-    let pokemons = await pokemonService.getPokemons()
-    if (!pokemons || pokemons === undefined) {
+    let customerService = new CustomerService()
+    let customers = await customerService.getCustomers()
+    if (!customers || customers === undefined) {
       this.setState({
         todos: null
       })
       console.log('No se encontraron registros')
     } else {
       this.setState({
-        todos: pokemons
+        todos: customers
       })
     }
   }
@@ -113,14 +108,19 @@ class App extends Component {
   //Funcion de filtrado
   filtrar(tipo, elementos, texto) {
     switch(tipo){
-      case 'name':
+      case 'Name':
         return elementos.filter(element => {
-          if (element.name.toLowerCase().match(texto)) return true;
+          if (element.Name.toLowerCase().match(texto)) return true;
           return false
         })
-      case 'version':
+      case 'Address':
         return elementos.filter(element => {
-          if (element.version_group.name.toLowerCase().match(texto)) return true;
+          if (element.Address.toLowerCase().match(texto)) return true;
+          return false
+        })
+      case 'SalesRep':
+        return elementos.filter(element => {
+          if (element.SalesRep.toLowerCase().match(texto)) return true;
           return false
         })
         default:
@@ -229,11 +229,11 @@ class App extends Component {
     currentTodos.forEach((dato, index) => {
       renderTodos.push(
         <tr key={index}>
-          <td>{dato.id}</td>
-          <td>{dato.name}</td>
-          <td>{dato.order}</td>
-          <td><img src={dato.sprites.front_default} alt="logo"/></td>
-          <td>{dato.version_group.name}</td>
+          <td>{dato.CustNum}</td>
+          <td>{dato.Name}</td>
+          <td>{dato.Address}</td>
+          <td>{dato.Phone}</td>
+          <td>{dato.SalesRep}</td>
         </tr>)
     })
     return renderTodos
